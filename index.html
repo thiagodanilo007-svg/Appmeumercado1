@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Meu Mercado</title>
+</head>
+<body>
+    <header>🛒 Meu Mercado</header>
+    <div class="top">
+        <div class="total-area">
+            <span>💰 Total: R$ <span id="total" style="font-weight:bold;">0.00</span></span>
+            <span>Meta: R$ <input type="number" id="budget" class="budget-input" value="0" onchange="calc()"></span>
+        </div>
+        <div class="actions-bar">
+            <button class="btn-action" style="background:#3b82f6;" onclick="shareWhatsApp()">Enviar WhatsApp</button>
+            <button class="btn-action" style="background:#ef4444;" onclick="clearAll()">Limpar</button>
+        </div>
+    </div>
+    <div class="fav-section">
+        <small style="color:#94a3b8;">⭐ Favoritos:</small>
+        <div class="fav-chips" id="favList"></div>
+    </div>
+    <div class="grid">
+        <button class="cat" onclick="show('Limpeza')">🧼 Limpeza</button>
+        <button class="cat" onclick="show('Frutas')">🍎 Frutas</button>
+        <button class="cat" onclick="show('Carnes')">🥩 Carnes</button>
+        <button class="cat" onclick="show('Padaria')">🥖 Padaria</button>
+        <button class="cat" onclick="show('Bebidas')">🥤 Bebidas</button>
+        <button class="cat" onclick="show('Higiene')">🪥 Higiene</button>
+    </div>
+    <div class="input">
+        <input id="input" placeholder="Digite o produto...">
+        <button class="add" onclick="add()">+</button>
+    </div>
+    <div id="list"></div>
+    <div id="modal" class="modal">
+        <div class="modalBox">
+            <h3>Alterar Preço</h3>
+            <input id="priceInput" type="number" step="0.01">
+            <button onclick="savePrice()" style="margin-top:10px; width:100%; padding:10px; background:#22c55e; border:none; border-radius:8px; cursor:pointer;">Salvar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+body { margin: 0; font-family: sans-serif; background: #0b1220; color: #fff; padding: 15px; box-sizing: border-box; }
+header { text-align: center; color: #22c55e; font-size: 22px; margin-bottom: 15px; font-weight: bold; }
+.top { background: #111c33; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
+.total-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.budget-input { width: 100px; padding: 5px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 4px; }
+.actions-bar { display: flex; gap: 10px; margin-top: 10px; }
+.btn-action { flex: 1; padding: 10px; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+.cat { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 8px; color: #fff; font-size: 12px; cursor: pointer; }
+.fav-section { margin-bottom: 20px; }
+.fav-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; }
+.fav-chip { background: #f59e0b; padding: 6px 12px; border-radius: 20px; font-size: 12px; white-space: nowrap; cursor: pointer; color: #000; font-weight: bold; }
+.input { display: flex; gap: 8px; margin-bottom: 20px; }
+input { flex: 1; padding: 12px; border: none; border-radius: 8px; background: #111c33; color: #fff; }
+.add { background: #22c55e; border: none; padding: 0 20px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
+.item { background: #111c33; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.item.done { opacity: 0.5; text-decoration: line-through; border: 1px solid #ef4444; }
+.info { flex: 1; display: flex; align-items: center; gap: 8px; }
+.name { font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+.star { cursor: pointer; color: #f59e0b; font-size: 1.2rem; padding: 4px; }
+.priceArea { font-size: 13px; color: #22c55e; display: flex; align-items: center; gap: 4px; }
+.priceInput { width: 50px; background: #0f172a; border: 1px solid #334155; color: #22c55e; border-radius: 4px; padding: 1px 3px; text-align: center; font-size: 12px;}
+.controls { display: flex; align-items: center; gap: 5px; }
+.btn-small { background: #334155; border: none; color: #fff; width: 26px; height: 26px; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
+.del { background: #ef4444; border: none; color: #fff; padding: 6px; border-radius: 5px; cursor: pointer; }
+.doneBtn { background: #22c55e; border: none; padding: 6px; border-radius: 5px; cursor: pointer; }
+.modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; }
+.modalBox { background:#111c33; padding:20px; border-radius:12px; width:80%; max-width:300px; text-align:center; }
+#suggestions { margin-top: 20px; display: none; }
+#suggestions h4 { color: #f59e0b; margin-bottom: 10px;}
+.suggestion-list { display: flex; flex-wrap: wrap; gap: 8px;}
+.suggestion-chip { background: #1e293b; color: #fff; padding: 6px 10px; border-radius: 15px; font-size: 12px; display: flex; align-items: center; gap: 6px; cursor: pointer;}
