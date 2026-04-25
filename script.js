@@ -49,15 +49,10 @@ function changeQty(i, delta) { items[i].qty = Math.max(1, items[i].qty + delta);
 
 function openPrice(i) { 
     priceIndex = i; 
-    const input = document.getElementById("priceInput"); 
     document.querySelector(".modalBox h3").innerHTML = "💰 Alterar Preço";
     document.getElementById("priceInput").value = items[i].price.toFixed(2); 
     document.getElementById("modal").style.display = "flex"; 
-    
-    setTimeout(() => {
-        document.getElementById("priceInput").focus();
-        document.getElementById("priceInput").select();
-    }, 100);
+    setTimeout(() => { document.getElementById("priceInput").focus(); document.getElementById("priceInput").select(); }, 100);
 }
 
 function savePrice() { 
@@ -68,7 +63,19 @@ function savePrice() {
     save(); render(); 
 }
 
-function calc() { let t = items.reduce((sum, i) => i.bought ? sum : sum + (i.price * i.qty), 0); document.getElementById("total").innerText = t.toFixed(2); }
+function calc() { 
+    let t = items.reduce((sum, i) => i.bought ? sum : sum + (i.price * i.qty), 0); 
+    const totalElement = document.getElementById("total");
+    const budget = parseFloat(document.getElementById("budget").value) || 0;
+    totalElement.innerText = t.toFixed(2); 
+    
+    // Total fica verde por padrão e vermelho se passar da meta
+    if (budget > 0 && t > budget) {
+        totalElement.style.color = "red";
+    } else {
+        totalElement.style.color = "#22c55e";
+    }
+}
 
 function shareWhatsApp() { 
     let msg = "🛒 Minha Lista:\n"; 
@@ -77,7 +84,6 @@ function shareWhatsApp() {
     }); 
     msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; 
     
-    // URL segura que o Android aceita no WebViewer do seu APK
     let url = "https://wa.me/?text=" + encodeURIComponent(msg);
     window.open(url, '_blank'); 
 }
@@ -86,4 +92,4 @@ function save() { localStorage.setItem("items", JSON.stringify(items)); localSto
 function clearAll() { items = []; save(); render(); }
 
 render();
-
+        
