@@ -50,7 +50,6 @@ function changeQty(i, delta) { items[i].qty = Math.max(1, items[i].qty + delta);
 function openPrice(i) { 
     priceIndex = i; 
     const input = document.getElementById("priceInput"); 
-    // Atualiza o título do modal com o símbolo de dinheiro
     document.querySelector(".modalBox h3").innerHTML = "💰 Alterar Preço";
     document.getElementById("priceInput").value = items[i].price.toFixed(2); 
     document.getElementById("modal").style.display = "flex"; 
@@ -70,8 +69,21 @@ function savePrice() {
 }
 
 function calc() { let t = items.reduce((sum, i) => i.bought ? sum : sum + (i.price * i.qty), 0); document.getElementById("total").innerText = t.toFixed(2); }
-function shareWhatsApp() { let msg = "🛒 Minha Lista:\n"; items.forEach(i => { msg += `${i.icon} ${i.qty}x ${i.name} - R$ ${(i.price*i.qty).toFixed(2)}\n`; }); msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`); }
+
+function shareWhatsApp() { 
+    let msg = "🛒 Minha Lista:\n"; 
+    items.forEach(i => { 
+        msg += `${i.icon} ${i.qty}x ${i.name} - R$ ${(i.price*i.qty).toFixed(2)}\n`; 
+    }); 
+    msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; 
+    
+    // URL segura que o Android aceita no WebViewer do seu APK
+    let url = "https://wa.me/?text=" + encodeURIComponent(msg);
+    window.open(url, '_blank'); 
+}
+
 function save() { localStorage.setItem("items", JSON.stringify(items)); localStorage.setItem("favs", JSON.stringify(favs)); localStorage.setItem("priceHistory", JSON.stringify(priceHistory)); }
 function clearAll() { items = []; save(); render(); }
 
 render();
+
