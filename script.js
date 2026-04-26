@@ -69,7 +69,6 @@ function calc() {
     const budget = parseFloat(document.getElementById("budget").value) || 0;
     totalElement.innerText = t.toFixed(2); 
     
-    // Total fica verde por padrão e vermelho se passar da meta
     if (budget > 0 && t > budget) {
         totalElement.style.color = "red";
     } else {
@@ -85,11 +84,10 @@ function shareWhatsApp() {
     msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; 
     
     let url = "https://wa.me/?text=" + encodeURIComponent(msg);
-    window.open(url, '_blank'); 
+    location.href = url; 
 }
 
 function save() { localStorage.setItem("items", JSON.stringify(items)); localStorage.setItem("favs", JSON.stringify(favs)); localStorage.setItem("priceHistory", JSON.stringify(priceHistory)); }
 function clearAll() { items = []; save(); render(); }
 
 render();
-        
