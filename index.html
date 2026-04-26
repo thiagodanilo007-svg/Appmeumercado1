@@ -8,20 +8,25 @@
 </head>
 <body>
     <header>🛒 Meu Mercado</header>
+
     <div class="top">
         <div class="total-area">
             <span>💰 Total: R$ <span id="total" style="font-weight:bold;">0.00</span></span>
             <span>Meta: R$ <input type="number" id="budget" class="budget-input" value="0" onchange="calc()"></span>
         </div>
+
         <div class="actions-bar">
+            <!-- 🔥 BOTÃO JÁ FUNCIONANDO -->
             <button class="btn-action" style="background:#3b82f6;" onclick="shareWhatsApp()">Enviar WhatsApp</button>
             <button class="btn-action" style="background:#ef4444;" onclick="clearAll()">Limpar</button>
         </div>
     </div>
+
     <div class="fav-section">
         <small style="color:#94a3b8;">⭐ Favoritos:</small>
         <div class="fav-chips" id="favList"></div>
     </div>
+
     <div class="grid">
         <button class="cat" onclick="show('Limpeza')">🧼 Limpeza</button>
         <button class="cat" onclick="show('Frutas')">🍎 Frutas</button>
@@ -30,11 +35,14 @@
         <button class="cat" onclick="show('Bebidas')">🥤 Bebidas</button>
         <button class="cat" onclick="show('Higiene')">🪥 Higiene</button>
     </div>
+
     <div class="input">
         <input id="input" placeholder="Digite o produto...">
         <button class="add" onclick="add()">+</button>
     </div>
+
     <div id="list"></div>
+
     <div id="modal" class="modal">
         <div class="modalBox">
             <h3>Alterar Preço</h3>
@@ -42,6 +50,40 @@
             <button onclick="savePrice()" style="margin-top:10px; width:100%; padding:10px; background:#22c55e; border:none; border-radius:8px; cursor:pointer;">Salvar</button>
         </div>
     </div>
+
+    <!-- 🔥 SCRIPT ATUALIZADO -->
+    <script>
+        function shareWhatsApp() {
+
+            let texto = "🛒 Meu Mercado\n\n";
+
+            let lista = document.getElementById("list").children;
+
+            if (lista.length === 0) {
+                texto += "Lista vazia 😅";
+            } else {
+                for (let i = 0; i < lista.length; i++) {
+                    let item = lista[i];
+                    texto += "• " + item.innerText + "\n";
+                }
+            }
+
+            let total = document.getElementById("total").innerText;
+
+            texto += "\n💰 Total: R$ " + total;
+
+            // 🔥 FORMATAÇÃO OBRIGATÓRIA
+            texto = encodeURIComponent(texto);
+
+            // 🔥 ENVIA PRO KODULAR
+            if (window.AppInventor) {
+                window.AppInventor.setWebViewString(texto);
+            } else {
+                alert("Teste funcionando apenas no APK");
+            }
+        }
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
