@@ -83,7 +83,8 @@ function shareWhatsApp() {
     }); 
     msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; 
     
-    let url = "https://wa.me/?text=" + encodeURIComponent(msg);
+    // Forçamos o uso de intent para garantir que o Android abra o app do WhatsApp
+    const url = "intent://send?text=" + encodeURIComponent(msg) + "#Intent;scheme=smsto;package=com.whatsapp;end";
     location.href = url; 
 }
 
