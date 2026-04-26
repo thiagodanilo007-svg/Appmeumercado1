@@ -83,9 +83,9 @@ function shareWhatsApp() {
     }); 
     msg += `\nTotal: R$ ${document.getElementById('total').innerText}`; 
     
-    // Forçamos o uso de intent para garantir que o Android abra o app do WhatsApp
-    const url = "intent://send?text=" + encodeURIComponent(msg) + "#Intent;scheme=smsto;package=com.whatsapp;end";
-    location.href = url; 
+    // Atualizado: usando wa.me para maior compatibilidade em WebViews/APKs
+    const url = "https://wa.me/?text=" + encodeURIComponent(msg);
+    window.open(url, '_blank');
 }
 
 function save() { localStorage.setItem("items", JSON.stringify(items)); localStorage.setItem("favs", JSON.stringify(favs)); localStorage.setItem("priceHistory", JSON.stringify(priceHistory)); }
